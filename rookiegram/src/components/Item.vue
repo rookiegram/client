@@ -29,7 +29,7 @@ export default {
         }
       })
         .then(function (response) {
-          location.reload()
+          this.$router.push('/timeline')
         })
     },
     dislike () {
@@ -40,7 +40,7 @@ export default {
         }
       })
         .then(function (response) {
-          location.reload()
+          this.$router.push('/timeline')
         })
     },
     share () {
