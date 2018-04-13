@@ -28,7 +28,7 @@ export default {
   methods: {
     fetchPost () {
       let self = this
-      axios.get(`http://localhost:3000/posts/id/${self.url}`)
+      axios.get(`http://35.186.158.81/posts/id/${self.url}`)
         .then(function (response) {
           self.payload = response.data.data
           console.log(self.payload)

@@ -71,7 +71,7 @@ export default {
         nickname: this.username,
         password: this.password
       }
-      axios.post('http://localhost:3000/register', obj)
+      axios.post('http://35.186.158.81/register', obj)
         .then(response => {
           alert('register success')
           console.log(response)
