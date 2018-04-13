@@ -3,7 +3,7 @@
     <img v-bind:src="item.image" alt="" class="rounded">
     <div class="row justify-content-center">
       <div class="col-xs-4 mr-2 font-weight-bold">{{item.userid.nickname}}</div>
-      <i class="fas fa-share-alt"></i>
+      <a v-on:click="share()"><i class="fas fa-share-alt"></i></a>
       <div class="ml-5">
         <a v-on:click="like()"><i class="far fa-thumbs-up grow"></i></a>
         <span class="badge badge-light">{{item.likes.length}}</span>
@@ -41,6 +41,14 @@ export default {
       })
         .then(function (response) {
           location.reload()
+        })
+    },
+    share () {
+      let text = `Check this post, guys @ ${this.item.image} `
+      // let postId = this.item._id
+      axios.post(`http://localhost:3000/twitter`, {tweet: text})
+        .then(function (response) {
+          alert('twitter sent !')
         })
     }
   }
