@@ -12,7 +12,7 @@
             <hr style="border: 1px solid #ccc;">
             <div class="input-group mb-3">
               <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">Email</span>
+                <span class="input-group-text" id="basic-addon1" >Email</span>
               </div>
                 <input v-model="email" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
             </div>
@@ -39,7 +39,9 @@ export default {
   data () {
     return {
       email: '',
-      password: ''
+      password: '',
+      emailbordercolor: '',
+      erremail: ''
     }
   },
   methods: {

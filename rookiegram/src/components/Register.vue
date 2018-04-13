@@ -10,11 +10,16 @@
         <div class="arkalogin">
             <div class="loginbaslik">Register Here</div>
             <hr style="border: 1px solid #ccc;">
+            <div>
+              <p id='error'>{{erremail}}</p>
+              <p id='error'>{{errpassword}}</p>
+              <p id='error'>{{errconfirmpassword}}</p>
+            </div>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">Email</span>
               </div>
-                <input v-model="email" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                <input v-model="email" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" v-bind:style="{ border: emailbordercolor }" v-on:keyup="validateEmail">
             </div>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
@@ -26,7 +31,13 @@
               <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">Password</span>
               </div>
-                <input v-model="password" type="password" class="form-control" aria-label="Password" aria-describedby="basic-addon1">
+                <input v-model="password" type="password" class="form-control" aria-label="Password" aria-describedby="basic-addon1" v-bind:style="{ border: passwordbordercolor }" v-on:keyup="validatePassword">
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Confirm Password</span>
+              </div>
+                <input v-model="confirmpassword" type="password" class="form-control" aria-label="Password" aria-describedby="basic-addon1" v-bind:style="{ border: confirmpasswordbordercolor }" v-on:keyup="validateConfirmPassword">
             </div>
             <button type="button" @click="signup" class="btn btn-primary">Register</button>
             <button type="button" @click="toLogin" class="btn btn-primary">Back To Login</button>
@@ -46,7 +57,8 @@ export default {
     return {
       email: '',
       username: '',
-      password: ''
+      password: '',
+      confirmpassword: ''
     }
   },
   methods: {
@@ -69,6 +81,44 @@ export default {
           alert('register failed')
           console.log(err)
         })
+    },
+    isEmailValid: function (email) {
+      var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      return re.test(email)
+    },
+    validateEmail: function () {
+      var isEmailValid = this.isEmailValid(this.email)
+      if (!isEmailValid) {
+        this.emailbordercolor = '2px solid red'
+        this.erremail = 'email is invalid'
+      } else {
+        this.emailbordercolor = ''
+        this.erremail = ''
+      }
+    },
+    isPasswordValid: function (password) {
+      var re = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/
+      return re.test(password)
+    },
+    validatePassword: function () {
+      let isPasswordValid = this.isPasswordValid(this.password)
+
+      if (!isPasswordValid) {
+        this.passwordbordercolor = '2px solid red'
+        this.errpassword = 'password is invalid'
+      } else {
+        this.passwordbordercolor = ''
+        this.errpassword = ''
+      }
+    },
+    validateConfirmPassword: function () {
+      if (this.password !== this.confirmpassword) {
+        this.confirmpasswordbordercolor = '2px solid red'
+        this.errconfirmpassword = 'password is different'
+      } else {
+        this.confirmpasswordbordercolor = ''
+        this.errconfirmpassword = ''
+      }
     }
   }
 }
@@ -96,7 +146,7 @@ export default {
     width: 300px;
     text-align: center;
     background: #fff;
-    height: 300px;
+    height: 435px;
     padding: 10px;
     margin: 50px auto;
 }
@@ -131,6 +181,11 @@ export default {
 .butonlogin:hover
 {
     background: #1E88E5;
+}
+#error
+{
+    color: red;
+    float: left;
 }
 #body
 {

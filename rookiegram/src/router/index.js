@@ -5,6 +5,8 @@ import Login from '@/components/Login'
 import Register from '@/components/Register'
 import Timeline from '@/components/Timeline'
 import Visitor from '@/components/Visitor'
+import MyUpload from '@/components/MyUpload'
+import MyProfile from '@/components/MyProfile'
 
 Vue.use(Router)
 
@@ -31,6 +33,16 @@ const router = new Router({
       path: '/visitor',
       name: 'Visitor',
       component: Visitor
+    },
+    {
+      path: '/myupload',
+      name: 'MyUpload',
+      component: MyUpload
+    },
+    {
+      path: '/myprofile',
+      name: 'MyProfile',
+      component: MyProfile
     }
   ]
 })
