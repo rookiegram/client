@@ -16,10 +16,10 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li class="nav-item text-white">
-        <a class="nav-link disabled text-warning" href="#">Hi, Richo</a>
+        <a class="nav-link disabled text-warning" href="#">Hi, {{nickname}}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-warning" href="#"><i class="fas fa-sign-out-alt"></i></a>
+        <a class="nav-link text-warning" v-on:click="logout"><i class="fas fa-sign-out-alt"></i></a>
       </li>
     </ul>
   </div>
@@ -28,6 +28,13 @@
 
 <script>
 export default {
+  props: ['nickname'],
+  methods: {
+    logout () {
+      localStorage.clear()
+      this.$router.push('/')
+    }
+  }
 }
 </script>
 

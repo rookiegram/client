@@ -43,7 +43,7 @@
 import axios from 'axios'
 export default {
   data () {
-    return{
+    return {
       email: '',
       username: '',
       password: ''
@@ -60,15 +60,15 @@ export default {
         password: this.password
       }
       axios.post('http://localhost:3000/register', obj)
-      .then(response => {
-        alert('register success')
-        console.log(response)
-        this.$router.push('/')
-      })
-      .catch(err => {
-        alert('register failed')
-        console.log(err)
-      })
+        .then(response => {
+          alert('register success')
+          console.log(response)
+          this.$router.push('/')
+        })
+        .catch(err => {
+          alert('register failed')
+          console.log(err)
+        })
     }
   }
 }
@@ -137,4 +137,3 @@ export default {
     margin: 0;
 }
 </style>
-
