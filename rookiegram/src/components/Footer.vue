@@ -1,7 +1,8 @@
 <template>
   <div class="upload">
-  <Upload></Upload>
-</div>
+    <Upload></Upload>
+  </div>
+  
 </template>
 <script>
 import Upload from '@/components/Upload'
