@@ -3,7 +3,7 @@
   <Navbar :nickname="nickname"></Navbar>
   <div class="container mb-5">
     <div class="row">
-        <Item v-for="(item,index) in items" v-bind:key='index' :item="item" class ="margin-right-lg col-lg-4 mb-3"></Item>
+        <Item v-for="(item,index) in items" v-bind:key='index' :item="item" @changestatus="changeUploadStatus" class ="margin-right-lg col-lg-4 mb-3"></Item>
       </div>
     </div>
     <Footer class="fixed-bottom bg-primary"></Footer>
@@ -22,7 +22,8 @@ export default {
   data () {
     return {
       items: [],
-      nickname: localStorage.getItem('email').split('@')[0]
+      nickname: localStorage.getItem('email').split('@')[0],
+      uploadStatus: false
     }
   },
   methods: {
@@ -37,9 +38,16 @@ export default {
         .then(function (response) {
           self.items = response.data.data
         })
+    },
+    changeUploadStatus() {
+      this.uploadStatus = !this.uploadStatus
+      console.log('------', this.uploadStatus)
     }
   },
   created () {
+    this.fetchTimeline()
+  },
+  updated () {
     this.fetchTimeline()
   }
 }

@@ -2,8 +2,10 @@
 <section id="body" style="height: 100vh;">
     <div style="background-image: url(images/arka.jpg); background-attachment: fixed; background-size: cover; width: 100%; height: 100vh; position: relative;"  >
     <div class="baslik">
-        <b style="font-size: 70px; text-align: center; margin-bottom: -21px; display: block;">R-GRAM</b>
-        <span style="font-size: 19px; text-align: center; display: block; margin-bottom: 25px;">Upload Here Bro!</span>
+        <b style="font-size: 70px; text-align: center; margin-bottom: -21px; display: block;">
+            <img src="../assets/logo2.png" class="rounded mx-auto d-block" style="width: 150px; height: 150px; margin: 20px">
+        </b>
+        <span style="font-size: 19px; text-align: center; display: block; margin-bottom: 25px;"></span>
     </div>
     <section>
     <form method="post" action="">
@@ -43,9 +45,9 @@
             <button type="button" @click="toLogin" class="btn btn-primary">Back To Login</button>
         </div>
     </form>
-    </section><br>
+    </section>
     <span style="font-size: 17px; text-align: center; display: block; color: #fff;
-    ">localhost aja bro</span>
+    ">Upload Here Bro!</span>
     </div>
     </section>
 </template>
@@ -83,8 +85,8 @@ export default {
         })
     },
     isEmailValid: function (email) {
-      // var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      // return re.test(email)
+      var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      return re.test(email)
     },
     validateEmail: function () {
       var isEmailValid = this.isEmailValid(this.email)
@@ -105,7 +107,7 @@ export default {
 
       if (!isPasswordValid) {
         this.passwordbordercolor = '2px solid red'
-        this.errpassword = 'password is invalid'
+        this.errpassword = 'password must contain number, min 7'
       } else {
         this.passwordbordercolor = ''
         this.errpassword = ''
@@ -190,5 +192,6 @@ export default {
 #body
 {
     margin: 0;
+    overflow-x: hidden;
 }
 </style>

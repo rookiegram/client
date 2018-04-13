@@ -48,6 +48,7 @@ export default {
     addPhoto: function () {
       let token = localStorage.getItem('token')
       this.formData.set('image', this.file)
+      this.$emit('changestatus')
       axios({
         method: 'post',
         url: 'http://35.186.158.81/posts',
@@ -57,7 +58,9 @@ export default {
         }
       }).then(({ data }) => {
         console.log(data)
-        location.reload()
+        // location.reload()
+        // this.$emit('changestatus', false)
+        this.$router.push('/timeline')
       })
     }
   }

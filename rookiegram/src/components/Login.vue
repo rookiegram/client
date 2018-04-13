@@ -28,7 +28,7 @@
             <button type="button" @click="toRegister" class="btn btn-primary">Register</button>
         </div>
     </form>
-    </section><br>
+    </section>
     <span style="font-size: 17px; text-align: center; display: block; color: #fff;
     ">Upload Here Bro!</span>
     </div>
