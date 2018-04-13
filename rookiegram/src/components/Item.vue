@@ -1,6 +1,6 @@
 <template>
   <div class="container rounded">
-    <img v-bind:src="item.image" alt="" class="rounded">
+    <img v-bind:src="item.image" alt="" class="rounded size">
     <div class="row justify-content-center">
       <div class="col-xs-4 mr-2 font-weight-bold">{{item.userid.nickname}}</div>
       <a v-on:click="share()"><i class="fas fa-share-alt"></i></a>
@@ -44,7 +44,7 @@ export default {
         })
     },
     share () {
-      let text = `Check this post, guys @ ${this.item.image} `
+      let text = `Check this post, guys @ http://localhost:8080/#/public/${this.item._id} `
       // let postId = this.item._id
       axios.post(`http://localhost:3000/twitter`, {tweet: text})
         .then(function (response) {
@@ -76,5 +76,10 @@ export default {
   -ms-transform:scale(1.3);
   -o-transform:scale(1.3);
   transform:scale(1.3);
+}
+
+.size {
+ width: 300px;
+ height: 300px;
 }
 </style>

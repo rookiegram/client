@@ -2,7 +2,7 @@
   <div>
     <div class="row">
       <div class="col-lg-6 border">
-        <Item></Item>
+        <Item :item="payload[0]"></Item>
       </div>
       <div class="col-lg-6 border">
         <Login></Login>
@@ -21,18 +21,22 @@ export default {
   },
   data () {
     return {
-      payload: {}
+      payload: [],
+      url: this.$route.params.id
     }
   },
   methods: {
     fetchPost () {
-      // let self = this
-      axios.get(`http://localhost:3000/posts/id/5ad0156ef542a53970255fca`)
+      let self = this
+      axios.get(`http://localhost:3000/posts/id/${self.url}`)
         .then(function (response) {
+          self.payload = response.data.data
+          console.log(self.payload)
         })
     }
   },
   created () {
+    this.fetchPost()
   }
 }
 </script>
