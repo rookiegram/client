@@ -5,6 +5,7 @@ import Login from '@/components/Login'
 import Register from '@/components/Register'
 import Timeline from '@/components/Timeline'
 import MyUpload from '@/components/MyUpload'
+import MyProfile from '@/components/MyProfile'
 
 Vue.use(Router)
 
@@ -29,6 +30,11 @@ export default new Router({
       path: '/myupload',
       name: 'MyUpload',
       component: MyUpload
+    },
+    {
+      path: '/myprofile',
+      name: 'MyProfile',
+      component: MyProfile
     }
   ]
 })

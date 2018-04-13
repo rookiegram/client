@@ -16,7 +16,7 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li class="nav-item text-white">
-        <a class="nav-link disabled text-warning" href="#">Hi, {{nickname}}</a>
+        <a class="nav-link disabled text-warning" href="#" @click="toMyProfile" >Hi, {{nickname}}</a>
       </li>
       <li class="nav-item">
         <a class="nav-link text-warning" v-on:click="logout"><i class="fas fa-sign-out-alt"></i></a>
@@ -39,6 +39,9 @@ export default {
     },
     toTimeline () {
       this.$router.push('/timeline')
+    },
+    toMyProfile () {
+      this.$router.push('/myprofile')
     }
   }
 }
