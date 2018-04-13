@@ -36,7 +36,7 @@ export default {
         }
       })
         .then(function (response) {
-          self.items = response.data.data
+          self.items = response.data.data.reverse()
         })
     },
     changeUploadStatus() {
