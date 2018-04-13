@@ -1,23 +1,49 @@
 <template>
   <div class="container rounded">
-    <img src="http://i0.kym-cdn.com/photos/images/newsfeed/000/484/441/038.png" alt="" class="rounded">
+    <img v-bind:src="item.image" alt="" class="rounded">
     <div class="row justify-content-center">
-      <div class="col-xs-4 mr-2 font-weight-bold">Richo Andy Bong</div>
+      <div class="col-xs-4 mr-2 font-weight-bold">{{item.userid.nickname}}</div>
       <i class="fas fa-share-alt"></i>
       <div class="ml-5">
-        <i class="far fa-thumbs-up grow"></i>
-        <span class="badge badge-light">4</span>
+        <a v-on:click="like()"><i class="far fa-thumbs-up grow"></i></a>
+        <span class="badge badge-light">{{item.likes.length}}</span>
       </div>
       <div class="">
-        <i class="far fa-thumbs-down grow"></i>
-        <span class="badge badge-light">4</span>
+        <a v-on:click="dislike()"><i class="far fa-thumbs-down grow"></i></a>
+        <span class="badge badge-light">{{item.dislikes.length}}</span>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
+  props: ['item'],
+  methods: {
+    like () {
+      let token = localStorage.getItem('token')
+      axios.put(`http://localhost:3000/posts/like/${this.item._id}`, {}, {
+        headers: {
+          token: token
+        }
+      })
+        .then(function (response) {
+          location.reload()
+        })
+    },
+    dislike () {
+      let token = localStorage.getItem('token')
+      axios.put(`http://localhost:3000/posts/dislike/${this.item._id}`, {}, {
+        headers: {
+          token: token
+        }
+      })
+        .then(function (response) {
+          location.reload()
+        })
+    }
+  }
 }
 </script>
 
@@ -25,7 +51,7 @@ export default {
   @media only screen and (max-width: 980px) {
     .container {
       width: 400px;
-    }  
+    }
   }
 
 .grow {
