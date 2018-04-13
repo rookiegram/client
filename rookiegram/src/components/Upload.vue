@@ -1,6 +1,8 @@
 <template lang="html">
   <div>
-    <button type="button" class="btn btn-outline-danger btn-lg" data-toggle="modal" data-target="#exampleModalCenter">Upload</button>
+    <label class="btn btn-default text-warning font-weight-bold" data-toggle="modal" data-target="#exampleModalCenter">
+    <i class="fas fa-upload"></i> Upload Here Bro !
+    </label>
     <!-- modal -->
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -44,14 +46,18 @@ export default {
       this.file = event.target.files[0]
     },
     addPhoto: function () {
+      let token = localStorage.getItem('token')
       this.formData.set('image', this.file)
       axios({
         method: 'post',
         url: 'http://localhost:3000/posts',
-        data: this.formData
+        data: this.formData,
+        headers: {
+          token: token
+        }
       }).then(({ data }) => {
         console.log(data)
-        this.getPhoto()
+        location.reload()
       })
     }
   }
