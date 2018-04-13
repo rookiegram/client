@@ -44,7 +44,7 @@ export default {
         })
     },
     share () {
-      let text = `Check this post, guys @ ${this.item.image} `
+      let text = `Check this post, guys @ http://localhost:8080/#/public/${this.item._id} `
       // let postId = this.item._id
       axios.post(`http://localhost:3000/twitter`, {tweet: text})
         .then(function (response) {
@@ -77,8 +77,10 @@ export default {
   -o-transform:scale(1.3);
   transform:scale(1.3);
 }
+
 .size {
-  width: 300px;
-  height: 300px;
+ width: 300px;
+ height: 300px;
+
 }
 </style>
