@@ -1,9 +1,11 @@
 <template>
-<section id="body" style="height: 100vh;">
+<section id="body" style="height: 100vh; ">
     <div style="background-image: url(images/arka.jpg); background-attachment: fixed; background-size: cover; width: 100%; height: 100vh; position: relative;"  >
     <div class="baslik">
-        <b style="font-size: 70px; text-align: center; margin-bottom: -21px; display: block;">R-GRAM</b>
-        <span style="font-size: 19px; text-align: center; display: block; margin-bottom: 25px;">Upload Here Bro!</span>
+        <b style="font-size: 70px; text-align: center; margin-bottom: -21px; display: block;">
+            <img src="../assets/logo2.png" class="rounded mx-auto d-block" style="width: 150px; height: 150px; margin: 20px">
+        </b>
+        <span style="font-size: 19px; text-align: center; display: block; margin-bottom: 25px;"></span>
     </div>
     <section>
     <form method="post" action="">
@@ -28,7 +30,7 @@
     </form>
     </section><br>
     <span style="font-size: 17px; text-align: center; display: block; color: #fff;
-    ">localhost aja bro</span>
+    ">Upload Here Bro!</span>
     </div>
     </section>
 </template>
@@ -132,5 +134,6 @@ export default {
 #body
 {
     margin: 0;
+    overflow-x: hidden;
 }
 </style>
