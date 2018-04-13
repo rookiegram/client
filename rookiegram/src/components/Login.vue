@@ -10,21 +10,17 @@
         <div class="arkalogin">
             <div class="loginbaslik">Sign-In</div>
             <hr style="border: 1px solid #ccc;">
-            <div>
-              <p id='error'>{{erremail}}</p>
-              <p id='error'>{{errpassword}}</p>
-            </div>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1" >Email</span>
               </div>
-                <input v-model="email" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" v-bind:style="{ border: emailbordercolor }" v-on:keyup="validateEmail">
+                <input v-model="email" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
             </div>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">Password</span>
               </div>
-                <input v-model="password" type="password" class="form-control" aria-label="Username" aria-describedby="basic-addon1" v-bind:style="{ border: passwordbordercolor }" v-on:keyup="validatePassword">
+                <input v-model="password" type="password" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
             </div>
             <button type="button" @click="signin" class="btn btn-primary">Login</button>
             <button type="button" @click="toRegister" class="btn btn-primary">Register</button>
@@ -70,35 +66,6 @@ export default {
     },
     toRegister () {
       this.$router.push('/register')
-    },
-    isEmailValid: function (email) {
-      var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      return re.test(email)
-    },
-    validateEmail: function () {
-      var isEmailValid = this.isEmailValid(this.email)
-      if (!isEmailValid) {
-        this.emailbordercolor = '2px solid red'
-        this.erremail = 'email is invalid'
-      } else {
-        this.emailbordercolor = ''
-        this.erremail = ''
-      }
-    },
-    isPasswordValid: function (password) {
-      var re = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/
-      return re.test(password)
-    },
-    validatePassword: function () {
-      let isPasswordValid = this.isPasswordValid(this.password)
-
-      if (!isPasswordValid) {
-        this.passwordbordercolor = '2px solid red'
-        this.errpassword = 'password is invalid'
-      } else {
-        this.passwordbordercolor = ''
-        this.errpassword = ''
-      }
     }
   }
 }
@@ -161,11 +128,6 @@ export default {
 .butonlogin:hover
 {
     background: #1E88E5;
-}
-#error
-{
-    color: red;
-    float: left;
 }
 #body
 {
