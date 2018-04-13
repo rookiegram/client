@@ -50,7 +50,7 @@ export default {
       this.formData.set('image', this.file)
       axios({
         method: 'post',
-        url: 'http://localhost:3000/posts',
+        url: 'http://35.186.158.81/posts',
         data: this.formData,
         headers: {
           token: token

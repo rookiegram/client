@@ -29,7 +29,7 @@ export default {
     fetchTimeline () {
       let self = this
       let token = localStorage.getItem('token')
-      axios.get('http://localhost:3000/posts/all/', {
+      axios.get('http://35.186.158.81/posts/all/', {
         headers: {
           token: token
         }

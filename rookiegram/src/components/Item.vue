@@ -23,7 +23,7 @@ export default {
   methods: {
     like () {
       let token = localStorage.getItem('token')
-      axios.put(`http://localhost:3000/posts/like/${this.item._id}`, {}, {
+      axios.put(`http://35.186.158.81/posts/like/${this.item._id}`, {}, {
         headers: {
           token: token
         }
@@ -34,7 +34,7 @@ export default {
     },
     dislike () {
       let token = localStorage.getItem('token')
-      axios.put(`http://localhost:3000/posts/dislike/${this.item._id}`, {}, {
+      axios.put(`http://35.186.158.81/posts/dislike/${this.item._id}`, {}, {
         headers: {
           token: token
         }
@@ -44,9 +44,9 @@ export default {
         })
     },
     share () {
-      let text = `Check this post, guys @ http://localhost:8080/#/public/${this.item._id} `
+      let text = `Check this post, guys @ http://rookiegram.wikasilo.com/#/public/${this.item._id} `
       // let postId = this.item._id
-      axios.post(`http://localhost:3000/twitter`, {tweet: text})
+      axios.post(`http://35.186.158.81/twitter`, {tweet: text})
         .then(function (response) {
           alert('twitter sent !')
         })

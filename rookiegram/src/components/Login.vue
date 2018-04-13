@@ -52,7 +52,7 @@ export default {
         email: this.email,
         password: this.password
       }
-      axios.post('http://localhost:3000/login', obj)
+      axios.post('http://35.186.158.81/login', obj)
         .then(response => {
           alert('login success')
           console.log(response.data)
